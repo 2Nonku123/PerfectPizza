@@ -6,187 +6,203 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfect Pizza</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="pizza1.png" type="image/png">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="./img/pizza1.png" type="image/png">
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
 </head>
 
 <body>
 
     <h1>Perfect Pizza</h1>
 
-    <div class="containerBox hidden">
-        <span class="message">Message</span> 
-        <br>
-        <button class="close" on type="button">&times;</button>
-    </div>
+    <div x-data="pizzaData">
 
-    <div class="contain cart">
-        <h2>Shopping Cart</h2>
-        <table class="cartTable">
-            <tr>
-                <td class="item">
-                    <h3 class="item">Small Pizza</h3>
-                </td>
-                <td><button class="pBtn small" data-size="smallAdd" on type="button">+</button></td>
-                <td>
-                    <h3 class="smallPizzaQty item">0</h3>
-                </td>
-                <td><button class="mBtn small" data-size="smallMin" on type="button">-</button></td>
-                <td>
-                    <h3 class="item">R<span class="smallPizzaTotal">0.00</span>
-                </td>
-            </tr>
+        <div class="containerBox" x-show="showBox">
+            <div style="color:white; font-weight: bolder;" x-text="message"></div>
 
-            <tr>
-                <td class="item">
-                    <h3 class="item">Medium Pizza</h3>
-                </td>
-                <td><button class="pBtn med" data-size="medAdd" on type="button">+</button></td>
-                <td>
-                    <h3 class="medPizzaQty item">0</h3>
-                </td>
-                <td><button class="mBtn med" data-size="medMin" on type="button">-</button></td>
-                <td>
-                    <h3 class="item">R<span class="medPizzaTotal">0.00</span>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    <h3 class="item">Large Pizza</h3>
-                </td>
-                <td><button class="pBtn large" data-size="largeAdd" on type="button">+</button></td>
-                <td>
-                    <h3 class="largePizzaQty item">0</h3>
-                </td>
-                <td><button class="mBtn large" data-size="largeMin" on type="button">-</button></td>
-                <td>
-                    <h3 class="item">R<span class="largePizzaTotal">0.00</span>
-                </td>
-            </tr>
-
-            <tr>
-                <td colspan="4">
-                    <h3 class="item">Total Cost</h3>
-                </td>
-                <td>
-                    <h3 class="item">R<span class="cartTotal">0.00</span></h3>
-                </td>
-            </tr>
-
-            <tr>
-                <td colspan="5">
-                    <button class="checkOut hidden" on type="button" name="checkOut">Check Out</button>
-                </td>
-            </tr>
-        </table>
-
-        <div class="payOut hidden">
-            <table class="cartTable">
-                <tr>
-                    <td>
-                        <h3>Payment Amount:</h3>
-                    </td>
-                    <td class="pAmt">R<input class="payAmt" type="number"></td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <button class="payBtn" on type="button" name="pay">Pay</button>
-                    </td>
-                </tr>
-            </table>
+            <button class="close" @click="closeBox()">Close</button>
         </div>
-    </div>
 
-    <div class="pizzas">
-        <div class="contain small_pizza">
+        <div class="pizzas">
+            <div class="contain small_pizza">
 
-            <h2>Small Pizza</h2>
+                <h2>Small Pizza</h2>
 
-            <div class="pizza_img">
-                <img src="pizza1.png" width="100">
+                <div class="pizza_img">
+                    <img src="./img/pizza1.png" width="100">
+                </div>
+
+                <table class="pizza_top">
+                    <tr>
+                        <td colspan="2">
+                            <h3>R39.00</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div>
+                                Small Pizza with 3 toppings max.<br>
+                                1 meat topping.<br>
+                                3 or less other toppings.
+                            </div>
+                        </td>
+                        <td>
+                            <button class="pBtn small buy" @click="addSmall()">Add</button>
+                        </td>
+                    </tr>
+                </table>
             </div>
 
-            <table class="pizza_top">
-                <tr>
-                    <td colspan="2">
-                        <h3>R39.00</h3>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div>
-                            Small Pizza with 3 toppings max.<br>
-                            1 meat topping.<br>
-                            3 or less other toppings.
-                        </div>
-                    </td>
-                    <td>
-                        <button class="pBtn small buy" data-size="smallAdd" on type="button">Buy</button>
-                    </td>
-                </tr>
-            </table>
-        </div>
+            <div class="contain medium_pizza">
 
-        <div class="contain medium_pizza">
+                <h2>Medium Pizza</h2>
 
-            <h2>Medium Pizza</h2>
+                <div class="pizza_img">
+                    <img src="./img/pizza.png" width="125">
+                </div>
 
-            <div class="pizza_img">
-                <img src="pizza.png" width="125">
+                <table class="pizza_top">
+                    <tr>
+                        <td colspan="2">
+                            <h3>R79.00</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div>
+                                Medium Pizza with 3 toppings max.<br>
+                                2 or less meat toppings.<br>
+                                3 or less other toppings.
+                            </div>
+                        </td>
+                        <td>
+                            <button class="pBtn med buy" @click="addMed()">Add</button>
+                        </td>
+                    </tr>
+                </table>
             </div>
 
-            <table class="pizza_top">
-                <tr>
-                    <td colspan="2">
-                        <h3>R79.00</h3>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div>
-                            Medium Pizza with 3 toppings max.<br>
-                            2 or less meat toppings.<br>
-                            3 or less other toppings.
-                        </div>
-                    </td>
-                    <td>
-                        <button class="pBtn med buy" data-size="medAdd" on type="button">Buy</button>
-                    </td>
-                </tr>
-            </table>
-        </div>
+            <div class="contain large_pizza">
 
-        <div class="contain large_pizza">
+                <h2>Large Pizza</h2>
 
-            <h2>Large Pizza</h2>
+                <div class="pizza_img">
+                    <img src="./img/pizza2.png" width="150">
+                </div>
 
-            <div class="pizza_img">
-                <img src="pizza2.png" width="150">
+                <table class="pizza_top">
+                    <tr>
+                        <td colspan="2">
+                            <h3>R99.00</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div>
+                                Large Pizza with 3 toppings max.<br>
+                                3 or less meat toppings.<br>
+                                3 or less other toppings.
+                            </div>
+                        </td>
+                        <td>
+                            <button class="pBtn large buy" @click="addLarge()">Add</button>
+                        </td>
+                    </tr>
+                </table>
             </div>
+        </div>
 
-            <table class="pizza_top">
-                <tr>
-                    <td colspan="2">
-                        <h3>R99.00</h3>
+        <div class="contain cart" x-show="cartTotal()>0">
+            <h2>Shopping Cart</h2>
+            <table class="cartTable" x-show="!showCart">
+                <tr x-show="smallQty>0">
+                    <td class="item">
+                        <h3 class="item">Small Pizza</h3>
+                    </td>
+                    <td><button class="pBtn small" @click="addSmall()">+</button></td>
+                    <td>
+                        <h3 class="smallPizzaQty item" x-text="smallQty">0</h3>
+                    </td>
+                    <td><button class="mBtn small" @click="minSmall()">-</button></td>
+                    <td>
+                        <h3 class="item">R <span x-text="smallPrice()">0.00</span></h3>
                     </td>
                 </tr>
-                <tr>
+
+                <tr x-show="medQty>0">
+                    <td class="item">
+                        <h3 class="item">Medium Pizza</h3>
+                    </td>
+                    <td><button class="pBtn med" @click="addMed()">+</button></td>
                     <td>
-                        <div>
-                            Large Pizza with 3 toppings max.<br>
-                            3 or less meat toppings.<br>
-                            3 or less other toppings.
-                        </div>
+                        <h3 class="medPizzaQty item" x-text="medQty">0</h3>
+                    </td>
+                    <td><button class="mBtn med" @click="minMed()">-</button></td>
+                    <td>
+                        <h3 class="item">R <span x-text="medPrice()">0.00</span></h3>
+                    </td>
+                </tr>
+
+                <tr x-show="largeQty>0">
+                    <td>
+                        <h3 class="item">Large Pizza</h3>
+                    </td>
+                    <td><button class="pBtn large" @click="addLarge()" on type="button">+</button></td>
+                    <td>
+                        <h3 class="largePizzaQty item" x-text="largeQty">0</h3>
+                    </td>
+                    <td><button class="mBtn large" @click="minLarge()" on type="button">-</button></td>
+                    <td>
+                        <h3 class="item">R <span x-text="largePrice()">0.00</span></h3>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="4">
+                        <h3 class="item">Total Cost</h3>
                     </td>
                     <td>
-                        <button class="pBtn large buy" data-size="largeAdd" on type="button">Buy</button>
+                        <h3 class="item">R <span x-text="cartTotalDisplay()">0.00</span></h3>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="5">
+                        <button class="checkOut" @click="checkout()">Check Out</button>
                     </td>
                 </tr>
             </table>
+
+            <div class="payOut" x-show="showCart">
+                <table class="cartTable">
+
+                    <tr>
+                        <td>
+                            <h3 class="item">Total </h3>
+
+                        </td>
+                        <td>
+                            R <span x-text="cartTotalDisplay()">0.00</span>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>Payment Amount:</h3>
+                        </td>
+                        <td class="pAmt">R <input class="payAmt" type="number" x-model="payAmount"></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">
+                            <button class="payBtn" @click="checkoutPay()">Pay</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
+
     </div>
-
     <div class="contain contact_us">
 
         <h2>Contact Details</h2>
@@ -209,9 +225,7 @@
         Nonkululeko Madondo | Pizza Pamphlet - Perfect Pizza | CodeX | 2022
     </div>
 
-    <script src="factoryFunction.js" charset="utf-8"></script>
-    <script src="cartFF.js" charset="utf-8"></script>
-
+    <script src="./js/pizzaApp.js" charset="utf-8"></script>
 </body>
 
 </html>
