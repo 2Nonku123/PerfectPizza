@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfect Pizza</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <link rel="shortcut icon" href="./img/pizza1.png" type="image/png">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
 </head>
@@ -23,7 +23,7 @@
             <button class="close" @click="closeBox()">Close</button>
         </div>
 
-        <div class="pizzas">
+        <div class="pizzas" x-show="!showCart">
             <div class="contain small_pizza">
 
                 <h2>Small Pizza</h2>

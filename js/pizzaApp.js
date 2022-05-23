@@ -67,7 +67,6 @@ var pizzaData = {
   checkoutPay() {
     let pay = this.getPayAmount();
     let total = this.cartTotal();
-    console.log(`${pay} : ${total}`);
     if (pay < total) {
       this.showBox = true;
       this.message = "Sorry, that is not enough money!";
